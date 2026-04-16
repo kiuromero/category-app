@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/Estilos-SCSS-bf616a.svg?logo=sass" alt="SCSS">
 </p>
 
-**CategoriesApp** es una aplicación de Angular de alto rendimiento diseñada para la gestión eficiente de categorías de productos. Cuenta con una interfaz **Premium Light** altamente optimizada, priorizando la claridad visual y la velocidad operativa.
+**CategoriesApp** es una aplicación de Angular de alto rendimiento diseñada para la gestión eficiente de categorías. Cuenta con una interfaz **Light** altamente optimizada, priorizando la claridad visual y la velocidad operativa.
 
 ---
 
@@ -20,7 +20,7 @@
 
 ---
 
-## 🎨 Sistema de Diseño: "Emerald & Slate"
+## 🎨 Sistema de Diseño:
 
 La aplicación implementa un lenguaje visual curado y coherente:
 
