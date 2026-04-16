@@ -1,0 +1,89 @@
+@import '../../../../../core/styles/variables';
+@import '../../../../../core/styles/mixins';
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+
+  label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: $text-muted;
+    margin-left: $spacing-xs;
+  }
+
+  input, textarea, select {
+    background: $surface-color; 
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    padding: 0.75rem $spacing-md;
+    color: $text-color;
+    transition: $transition-base;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 4px rgba($primary-color, 0.1);
+    }
+
+    &::placeholder {
+      color: $text-dimmed;
+    }
+
+    &.ng-invalid.ng-touched {
+      border-color: rgba($error-color, 0.5);
+      background: rgba($error-color, 0.05);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+}
+
+.error-message {
+  font-size: 0.75rem;
+  color: $error-color;
+  margin-left: $spacing-xs;
+  margin-top: 2px;
+}
+
+.form-actions {
+  @include flex-between;
+  margin-top: $spacing-md;
+  gap: $spacing-md;
+
+  button {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .btn-submit {
+    @include premium-button($primary-color);
+  }
+
+  .btn-cancel {
+    background: transparent;
+    border: 1px solid $border-color;
+    color: $text-muted;
+    border-radius: 2rem;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    transition: $transition-base;
+    font-weight: 500;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: $text-color;
+      border-color: $text-muted;
+    }
+  }
+}

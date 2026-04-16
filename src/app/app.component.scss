@@ -1,0 +1,109 @@
+@import './core/styles/variables';
+@import './core/styles/mixins';
+
+.navbar {
+  height: 80px;
+  @include glass-panel;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .nav-container {
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+    @include flex-between;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+
+  .logo {
+    width: 44px;
+    height: 44px;
+    background: $primary-color;
+    border-radius: 12px;
+    @include flex-center;
+    color: #fff;
+    box-shadow: none;
+
+    .material-icons {
+      font-size: 1.5rem;
+    }
+  }
+
+  .brand-info {
+    h1 {
+      font-size: 1.25rem;
+      line-height: 1;
+      
+      span {
+        color: $primary-light;
+      }
+    }
+
+    small {
+      font-size: 0.75rem;
+      color: $text-muted;
+      letter-spacing: 0.05em;
+    }
+  }
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+
+  .nav-btn {
+    background: transparent;
+    border: none;
+    color: $text-muted;
+    cursor: pointer;
+    transition: $transition-base;
+    @include flex-center;
+
+    &:hover {
+      color: $primary-light;
+    }
+  }
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    background: $surface-lighter;
+    border-radius: 50%;
+    @include flex-center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: $primary-light;
+  }
+
+  .username {
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding-right: $spacing-sm;
+    color: $text-muted;
+  }
+}
+
+.main-content {
+  min-height: calc(100vh - 80px);
+}

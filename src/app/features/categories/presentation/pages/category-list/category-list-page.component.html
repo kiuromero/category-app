@@ -1,0 +1,46 @@
+<div class="page-container">
+    <header class="page-header">
+        <div class="title-group">
+            <h2>Categorías</h2>
+            <p>Gestiona y organiza las categorías de tus productos</p>
+        </div>
+    </header>
+
+    <div class="action-bar">
+        <div class="search-box">
+            <span class="material-icons">search</span>
+            <input #searchInput placeholder="Buscar por nombre o código..." (input)="search(searchInput.value)" />
+        </div>
+        <button class="btn-create" (click)="openCreate()">
+            <span class="material-icons">add</span>
+            Nueva Categoría
+        </button>
+    </div>
+
+    <ng-container *ngIf="vm$ | async as vm">
+        <div class="state-container" *ngIf="vm.loading">
+            <span class="material-icons rotating">refresh</span>
+            <h3>Cargando datos...</h3>
+            <p>Por favor espera un momento.</p>
+        </div>
+
+        <div class="state-container error" *ngIf="vm.error">
+            <span class="material-icons">error_outline</span>
+            <h3>Hubo un problema</h3>
+            <p>No pudimos cargar las categorías. Por favor reintenta más tarde.</p>
+        </div>
+
+        <div class="state-container" *ngIf="!vm.loading && vm.data.length === 0 && !vm.error">
+            <span class="material-icons">inventory_2</span>
+            <h3>Sin resultados</h3>
+            <p>No se encontraron categorías que coincidan con tu búsqueda.</p>
+        </div>
+
+        <app-table *ngIf="!vm.loading && vm.data.length > 0" [data]="vm.data" [columns]="columns" (edit)="openEdit($event)"
+            (toggle)="facade.toggle($event)"></app-table>
+    </ng-container>
+
+    <app-modal [isOpen]="isModalOpen" [title]="selected ? 'Editar Categoría' : 'Nueva Categoría'" (close)="isModalOpen = false">
+        <app-category-form [data]="selected" (save)="save($event)" (cancel)="isModalOpen = false"></app-category-form>
+    </app-modal>
+</div>

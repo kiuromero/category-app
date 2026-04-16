@@ -1,0 +1,94 @@
+@import '../../../../core/styles/variables';
+@import '../../../../core/styles/mixins';
+
+:host {
+  display: block;
+  margin: $spacing-lg 0;
+}
+
+.table-container {
+  overflow-x: auto;
+  background: $surface-color;
+  border: 1px solid $border-color;
+  border-radius: $spacing-md;
+  box-shadow: $shadow-lg;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+thead {
+  background: $surface-lighter;
+  
+  th {
+    padding: $spacing-md;
+    font-weight: 600;
+    color: $text-muted;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid $border-color;
+    white-space: nowrap;
+  }
+}
+
+tbody {
+  tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: $transition-base;
+
+    &.is-inactive {
+      opacity: 0.6;
+      background: rgba($surface-lighter, 0.5);
+      
+      td {
+        color: $text-dimmed;
+      }
+    }
+
+    &:hover {
+      background: rgba($primary-color, 0.05);
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  td {
+    padding: $spacing-md;
+    color: $text-color;
+    vertical-align: middle;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-sm;
+
+  .action-btn {
+    background: $surface-lighter;
+    border: none;
+    color: $text-muted;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    @include flex-center;
+    cursor: pointer;
+    transition: $transition-base;
+
+    &:hover {
+      color: #fff;
+      &.edit { background: $primary-color; }
+      &.toggle { background: $warning-color; }
+    }
+
+    .material-icons {
+      font-size: 1.1rem;
+    }
+  }
+}

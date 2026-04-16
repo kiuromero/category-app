@@ -1,0 +1,125 @@
+@import '../../../../../core/styles/variables';
+@import '../../../../../core/styles/mixins';
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing-xl $spacing-md;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.page-header {
+  @include flex-between;
+  margin-bottom: $spacing-xl;
+  gap: $spacing-md;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .title-group {
+    h2 {
+      font-size: 2rem;
+      margin-bottom: $spacing-xs;
+      background: linear-gradient(135deg, $text-color 0%, $text-muted 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p {
+      color: $text-muted;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.action-bar {
+  @include flex-between;
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+
+  @include mobile {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .search-box {
+    position: relative;
+    flex: 1;
+    max-width: 400px;
+
+    @include mobile {
+      max-width: none;
+      width: 100%;
+    }
+
+    .material-icons {
+      position: absolute;
+      left: $spacing-md;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $text-dimmed;
+      font-size: 1.25rem;
+    }
+
+    input {
+      width: 100%;
+      background: $surface-color;
+      border: 1px solid $border-color;
+      padding: 0.75rem $spacing-md 0.75rem 3rem;
+      border-radius: 12px;
+      color: $text-color;
+      transition: $transition-base;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        background: $surface-lighter;
+        box-shadow: 0 0 0 4px rgba($primary-color, 0.1);
+      }
+
+      &::placeholder {
+        color: $text-dimmed;
+      }
+    }
+  }
+
+  .btn-create {
+    @include premium-button($primary-color);
+  }
+}
+
+.state-container {
+  @include flex-center;
+  flex-direction: column;
+  padding: $spacing-xl * 2;
+  text-align: center;
+  @include premium-card;
+  background: $surface-glass;
+  backdrop-filter: $glass-blur;
+
+  .material-icons {
+    font-size: 3rem;
+    color: $primary-color;
+    margin-bottom: $spacing-md;
+    opacity: 0.5;
+  }
+
+  h3 {
+    margin-bottom: $spacing-sm;
+    color: $text-color;
+  }
+
+  p {
+    color: $text-muted;
+  }
+
+  &.error {
+    .material-icons { color: $error-color; }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

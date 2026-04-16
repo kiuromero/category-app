@@ -1,0 +1,38 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-field">
+        <label for="code">Código de Categoría</label>
+        <input id="code" type="text" formControlName="code" placeholder="Ej. CAT-001" />
+        <span class="error-message" *ngIf="form.get('code')?.invalid && form.get('code')?.touched">
+            El código es obligatorio
+        </span>
+    </div>
+
+    <div class="form-field">
+        <label for="name">Nombre</label>
+        <input id="name" type="text" formControlName="name" placeholder="Ej. Electrónica" />
+        <span class="error-message" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+            El nombre es obligatorio
+        </span>
+    </div>
+
+    <div class="form-field">
+        <label for="description">Descripción</label>
+        <textarea id="description" formControlName="description"
+            placeholder="Añade una breve descripción..."></textarea>
+    </div>
+
+    <div class="form-field">
+        <label for="status">Estado</label>
+        <select id="status" formControlName="status">
+            <option value="ACTIVE">Activo</option>
+            <option value="INACTIVE">Inactivo</option>
+        </select>
+    </div>
+
+    <div class="form-actions">
+        <button type="button" class="btn-cancel" (click)="cancel.emit()">Cancelar</button>
+        <button type="submit" class="btn-submit" [disabled]="form.invalid">
+            {{ form.get('id')?.value ? 'Actualizar' : 'Crear' }}
+        </button>
+    </div>
+</form>
